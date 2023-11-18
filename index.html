@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series Calculator</title>
+    <script>
+        function hoch(basis, exponent){
+            if(exponent==0) return 1;
+            for (let i = 1; i < exponent; i++) {
+                basis *= basis;
+            }
+            return basis;
+        }
+        sqrt = (n) => Math.sqrt(n);
+        function start(){
+            let n_start = parseInt(document.getElementById('n_start').value);
+            let n_ende = document.getElementById('n_ende').value;
+            let s = document.getElementById('s').value;
+            let r = 0;
+            if(n_ende=='inf') n_ende = 1000000;
+            for (let n = n_start; n <= parseInt(n_ende); n++) {
+                r += eval(s);
+                console.log(r);
+            }
+            document.getElementById('out').value = Math.round(r * 1000) / 1000;
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="n_start" id="n_start">
+    <input type="text" name="n_ende" id="n_ende"><br>
+    <input type="text" name="s" id="s"><br>
+    <input type="text" readonly name="out" id="out">
+    <button onclick="start()">...</button><br>
+    hoch(basis, exponent)<br>
+    sqrt(x)<br>
+    inf = Infinity<br>
+</body>
+</html>
